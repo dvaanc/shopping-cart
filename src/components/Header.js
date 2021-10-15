@@ -1,6 +1,6 @@
-import React from 'react';
 import logo from '../assets/logo.png';
 import styled from 'styled-components';
+import shoppingCart from '../assets/shoppingcart.png';
 
 const Nav = styled.nav`
   display: flex;
@@ -24,28 +24,35 @@ const Nav = styled.nav`
       background-color: #141414;
     }
 `
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`
 const ImageWrapper = styled.div `
   min-width: 15%;
     &:hover {
       cursor: pointer;
     }
     & img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
     }
 `
 const ShoppingCart = styled.div `
-  height: 60px;
-  width: 60px;
+  position: relative;
+  left: 650px;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
   border-radius: 50%;
   background-color: white;
-  transition: transform .3s;
+  transition: background .3s ease-in-out, transform .3s;
   &:hover {
     cursor: pointer;
-    transform: scale(1.2)
+    transform: scale(1.2);
   }
-
 
 `
 const List = styled.ul`
@@ -53,7 +60,6 @@ const List = styled.ul`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   height: 100%;
   width: 100%;
   list-style-type: none;
@@ -62,10 +68,11 @@ const List = styled.ul`
     margin-left: 21px;
     margin-right: 21px;
     text-transform: uppercase;
-    letter-spacing: .2em;
     & a {
       color: #ffffff;
       text-decoration: none;
+      letter-spacing: .2em;
+      font-size: 25px;
       &::after {
       content: '';
       display: block;
@@ -89,20 +96,22 @@ const Group = styled.div`
 function Header() {
   return (
       <Nav>
-        <div>
+        <Wrapper>
           <ImageWrapper>
             <img src={logo} alt='logo' draggable="false" />
           </ImageWrapper>
           <ShoppingCart>
-            
+            <ImageWrapper>
+              <img src={shoppingCart} alt='shopping cart' draggable="false"/>
+            </ImageWrapper>
           </ShoppingCart>
-        </div>
+        </Wrapper>
         <List>
           <li>
             <a href='/'>HOME</a>
           </li>
           <li>
-            <a href='/'>STORE</a>
+            <a href='/store'>STORE</a>
           </li>
         </List>
       </Nav>
