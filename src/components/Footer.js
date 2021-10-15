@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import logo from '../assets/ghlogo.png'
 
 const Wrapper = styled.footer`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +11,8 @@ const Wrapper = styled.footer`
   background-color: grey;
   color: white;
   font-family: 'NunitoSans', sans-serif;
-  
+  user-select: none;
+  letter-spacing: .1em;
   & p {
     margin-right: 10px;
   }

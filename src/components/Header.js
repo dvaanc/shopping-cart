@@ -7,11 +7,12 @@ const Nav = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px 10px;
-  height: 15vh;
+  padding: 25px;
+  min-height: 17vh;
+  user-select: none;
   width: 100%;
   box-shadow: 0 -1px rgb(255 255 255 / 25%) inset;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${props => props.background};
   transition: background .3s ease-in-out, box-shadow .3s ease-in-out;
   top: 0;
   z-index: 5;
@@ -87,10 +88,6 @@ const List = styled.ul`
       }
     }
   }
-`
-const Group = styled.div`
-  display: flex;
-  flex-direction: row;
 `
 
 function Header() {
