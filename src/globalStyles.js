@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
+    overflow: visible;
     font-family: 'NunitoSans', sans-serif;
   }
 `;
