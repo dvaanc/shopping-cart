@@ -3,22 +3,22 @@ import styled from 'styled-components';
 import shoppingCart from '../assets/shoppingcart.png';
 
 const Nav = styled.nav`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px;
-  min-height: 17vh;
-  user-select: none;
+  min-height: 200px;
   width: 100%;
-  box-shadow: 0 -1px rgb(255 255 255 / 25%) inset;
+  padding: 25px;
   background-color: ${props => props.background};
+  user-select: none;
+  box-shadow: 0 -1px rgb(255 255 255 / 25%) inset;
   transition: background .3s ease-in-out, box-shadow .3s ease-in-out;
-  top: 0;
-  z-index: 5;
+  z-index: 3;
   overflow: visible;
-  position: -webkit-sticky;
-  position: sticky;
   font-family: 'NunitoSans', sans-serif;
   font-size: 30px;
     &:hover {
@@ -90,7 +90,7 @@ const List = styled.ul`
   }
 `
 
-function Header() {
+function Header(props) {
   return (
       <Nav>
         <Wrapper>
@@ -98,7 +98,7 @@ function Header() {
             <img src={logo} alt='logo' draggable="false" />
           </ImageWrapper>
           <ShoppingCart>
-            <ImageWrapper>
+            <ImageWrapper onClick={props.handleClick}>
               <img src={shoppingCart} alt='shopping cart' draggable="false"/>
             </ImageWrapper>
           </ShoppingCart>

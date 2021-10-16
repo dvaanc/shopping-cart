@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header';
 import Nav from './styles';
 
 const Content = styled.div`
@@ -21,7 +20,7 @@ const HeaderStore = styled(Nav)`
 function Store() {
   return (
     <Content>
-      <Header />
+      {/* <Header /> */}
       <Main>
 
       </Main>
