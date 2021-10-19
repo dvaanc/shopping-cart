@@ -1,13 +1,34 @@
 import React from 'react';
-import styled, { ThemeConsumer, ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import close from '../../assets/close.png';
 function Cart(props) {
   const [showCart, setShowCart] = React.useState({
     isToggled: 'hidden'
-  })
+  });
+  const [items, setItems] = React.useState([
+
+  ])
   React.useEffect(() => {
     props.toggleCart.current = toggleCart;
-  }, [])
+    props.addToCart.current = addToCart;
+    console.log(items)
+  }, [items])
+
+  const addToCart = (item) => {
+    const isItemInCart = items.some((i) => i.name === item.name)
+    if(isItemInCart) {
+      const i = items.findIndex((i) => i.name === item.name)
+      items[i].quantity += 1
+      return setItems([...items]);
+    }
+    const itemToAdd = {
+      name: item.name,
+      price: item.price,
+      img: item.img,
+      quantity: 1,
+    }
+        setItems([ ...items, itemToAdd])
+  }
   const toggleCart = () => {
     if(showCart.isToggled === 'hidden') return setShowCart({ isToggled: 'visible' });
     if(showCart.isToggled === 'visible') return setShowCart({ isToggled: 'hidden' })
@@ -32,6 +53,7 @@ function Cart(props) {
 
   )
 } 
+export default Cart;
 
 const Parent = styled.div`
   position: fixed;
@@ -73,6 +95,3 @@ const CartHeader = styled.div`
     letter-spacing: .1em;
   }
 `
-
-
-export default Cart;

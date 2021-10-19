@@ -40,7 +40,7 @@ const Nav = styled.nav`
   justify-content: center;
   min-height: 150px;
   width: 100%;
-  background-color: ${props => props.background};
+  background-color: #141414;
   user-select: none;
   box-shadow: 0 -1px rgb(255 255 255 / 25%) inset;
   transition: background .3s ease-in-out, box-shadow .3s ease-in-out;
@@ -48,9 +48,6 @@ const Nav = styled.nav`
   overflow: visible;
   font-family: 'NunitoSans', sans-serif;
   font-size: 30px;
-    &:hover {
-      background-color: #141414;
-    }
 `
 const Wrapper = styled.div`
   display: flex;

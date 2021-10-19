@@ -13,33 +13,34 @@ const Parent = styled.div`
   background-color: darkblue;
 `
 function App() {
-
-  const cartRef = React.useRef(null)
-  let isToggle = false;
-  const [blur, setBlur] = React.useState('hidden');
-  const [showCart, setShowCart] = React.useState('-110%');
-  const handleClick = (e) => {
-    cartRef.current(e)
-    // if(!isToggle) {
-    //   isToggle = true;
-    //   setBlur('visible');
-    //   setShowCart('0');
-    // }
-    // isToggle = false;
-    // setBlur('hidden');
-    // setShowCart('-110%');
-  }
+  const toggleCartRef = React.useRef(null)
+  const addToCartRef = React.useRef(null)
+  // let isToggle = false;
+  // const [blur, setBlur] = React.useState('hidden');
+  // const [showCart, setShowCart] = React.useState('-110%');
+  const handleClick = (e) => toggleCartRef.current(e);
+  const addToCart = (item) => addToCartRef.current(item);
   return (
       <Parent>
         <Header handleClick={handleClick}/>
         <Router> 
           <Switch>
-            <Route exact path='/' component={Home} background="#141414"/>
-            <Route exact path='/store' component={Store} background="#141414"/>
+            <Route 
+            exact 
+            path='/' 
+            component={Home} 
+            // render={() => <Home />}
+            />
+            <Route 
+            exact 
+            path='/store' 
+            // component={Store} 
+            render={() => <Store addToCart={addToCart} background="#141414" />}
+            />
           </Switch>
         </Router>
         <Footer />
-        <Cart toggleCart={cartRef} blur={showCart} showCart={blur} />
+        <Cart toggleCart={toggleCartRef} addToCart={addToCartRef}/>
       </Parent>
   );
 }

@@ -12,7 +12,7 @@ function Home(props) {
           </ImageWrapper>
           <ImageContent>
             <h3>GROUP BUY LIVE</h3>
-            <p>GMK NAUTILUS ROUND 2</p>
+            <p>GMK NAUTILUS</p>
             <a href="/store">
               <button>SHOP NOW</button>
             </a>
@@ -22,9 +22,7 @@ function Home(props) {
   )
 }
 const Content = styled.div`
-  position: relative;
-  top: -200px;
-  height: 100%;
+  height: auto;
   background-color: red;
 `
 const Notice = styled.div`
@@ -49,8 +47,10 @@ const ImageWrapper = styled.div `
     }
 `
 const Main = styled.div`
-  height: 100%;
+  position: relative;
+  height: 100vh;
   width: 100%;
+  background-color: #262128;
 
 `
 const ImageContent = styled.div`

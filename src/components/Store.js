@@ -1,17 +1,23 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import keysetInventory from './cart/cart-item';
 
-function Store() {
+function Store(props) {
+  const inventory = keysetInventory;
   const addToCart = (e) => {
-    console.log('test')
+    const name = e.target.parentNode.childNodes[1].childNodes[0].dataset.name;
+    const price = Number(e.target.parentNode.childNodes[1].childNodes[1].dataset.price);
+    const img = e.target.parentNode.childNodes[0].childNodes[0].src;
+    const item = { name, price, img }
+    props.addToCart(item);
   }
   return (
   <Content>
     <Main>
       <CardContainer>
-      {keysetInventory.map((item, i) => {
+      {inventory.map((item, i) => {
         const uuid = uuidv4();
         return (
           <Card key={uuid}>
@@ -19,20 +25,23 @@ function Store() {
               <img src={item.img} alt='ePBT Sniper'/>
             </ImageWrapper>
             <DivWrapper>
-              <p>{item.name}</p>
-              <p>${item.price}</p>
+              <p data-name={item.name}>{item.name}</p>
+              <p data-price={item.price}>${item.price}</p>
             </DivWrapper>
             <button onClick={addToCart}>Add to Cart</button>
           </Card>
         )
       })
       }
-
       </CardContainer>
     </Main>
   </Content>
   )
 }
+
+const StoreWRouter = withRouter(Store);
+export default StoreWRouter;
+
 const Content = styled.div`
   height: auto;
   background-color: #262128;
@@ -57,11 +66,11 @@ const Card = styled.div`
   flex-direction: column;
   min-height: 25%;
   min-width: 15%;
-  @media only screen and (max-width: 800px) {
-    min-height: 10%;
+  /* @media only screen and (max-width: 800px) {
+    min-height: 15%;
     min-width: 15%;
     font-size: 15px;
-  }
+  } */
   &:hover {
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -97,4 +106,3 @@ const DivWrapper = styled.div`
     margin-bottom: 5px;
   }
 `
-export default Store;
