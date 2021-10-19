@@ -2,11 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import homeImage from '../assets/homeimage.png';
 
+function Home(props) {
+  return (
+    <Content>
+      <Notice>INTERNATIONAL SERVICES CURRENTLY SUSPENDED FOR PHILIPPINES, INDIA, MALAYSIA, SINGAPORE, KOREA. PLEASE USE DHL ONLY</Notice>
+        <Main>
+          <ImageWrapper>
+            <img src={homeImage} alt="keyboard" draggable="false"/>
+          </ImageWrapper>
+          <ImageContent>
+            <h3>GROUP BUY LIVE</h3>
+            <p>GMK NAUTILUS ROUND 2</p>
+            <a href="/store">
+              <button>SHOP NOW</button>
+            </a>
+          </ImageContent>
+        </Main>
+    </Content>
+  )
+}
 const Content = styled.div`
   position: relative;
   top: -200px;
-  height: auto;
-  background-color: darkblue;
+  height: 100%;
+  background-color: red;
 `
 const Notice = styled.div`
   padding: 15px;
@@ -32,7 +51,7 @@ const ImageWrapper = styled.div `
 const Main = styled.div`
   height: 100%;
   width: 100%;
-  margin-bottom: -200px;
+
 `
 const ImageContent = styled.div`
   position: absolute;
@@ -65,24 +84,4 @@ const ImageContent = styled.div`
     }
   }
 `
-function Home(props) {
-  return (
-    <Content>
-      <Notice>INTERNATIONAL SERVICES CURRENTLY SUSPENDED FOR PHILIPPINES, INDIA, MALAYSIA, SINGAPORE, KOREA. PLEASE USE DHL ONLY</Notice>
-        <Main>
-          <ImageWrapper>
-            <img src={homeImage} alt="keyboard" draggable="false"/>
-          </ImageWrapper>
-          <ImageContent>
-            <h3>GROUP BUY LIVE</h3>
-            <p>GMK NAUTILUS ROUND 2</p>
-            <a href="/store">
-              <button>SHOP NOW</button>
-            </a>
-          </ImageContent>
-        </Main>
-    </Content>
-  )
-}
-
 export default Home;

@@ -2,6 +2,34 @@ import logo from '../assets/logo.png';
 import styled from 'styled-components';
 import shoppingCart from '../assets/shoppingcart.png';
 
+function Header(props) {
+  return (
+      <Nav>
+        <Wrapper>
+          <ImageWrapper>
+            <img src={logo} alt='logo' draggable="false" />
+          </ImageWrapper>
+          <div>
+          <ShoppingCart>
+            <ImageWrapper onClick={props.handleClick}>
+              <img src={shoppingCart} alt='shopping cart' draggable="false"/>
+            </ImageWrapper>
+          </ShoppingCart>
+          </div>
+
+        </Wrapper>
+        <List>
+          <li>
+            <a href='/'>HOME</a>
+          </li>
+          <li>
+            <a href='/store'>STORE</a>
+          </li>
+        </List>
+      </Nav>
+  )
+}
+
 const Nav = styled.nav`
   position: -webkit-sticky;
   position: sticky;
@@ -10,9 +38,8 @@ const Nav = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 150px;
   width: 100%;
-  padding: 25px;
   background-color: ${props => props.background};
   user-select: none;
   box-shadow: 0 -1px rgb(255 255 255 / 25%) inset;
@@ -28,7 +55,8 @@ const Nav = styled.nav`
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  justify-content: center;
+  padding: 0 30px;
+  justify-content: space-between;
   align-items: center;
 `
 const ImageWrapper = styled.div `
@@ -42,8 +70,6 @@ const ImageWrapper = styled.div `
     }
 `
 const ShoppingCart = styled.div `
-  position: relative;
-  left: 650px;
   height: 50px;
   width: 50px;
   padding: 10px;
@@ -59,10 +85,11 @@ const ShoppingCart = styled.div `
 const List = styled.ul`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   width: 100%;
+  padding: 0 30px;
   list-style-type: none;
   & li {
     padding: 2px;
@@ -89,30 +116,5 @@ const List = styled.ul`
     }
   }
 `
-
-function Header(props) {
-  return (
-      <Nav>
-        <Wrapper>
-          <ImageWrapper>
-            <img src={logo} alt='logo' draggable="false" />
-          </ImageWrapper>
-          <ShoppingCart>
-            <ImageWrapper onClick={props.handleClick}>
-              <img src={shoppingCart} alt='shopping cart' draggable="false"/>
-            </ImageWrapper>
-          </ShoppingCart>
-        </Wrapper>
-        <List>
-          <li>
-            <a href='/'>HOME</a>
-          </li>
-          <li>
-            <a href='/store'>STORE</a>
-          </li>
-        </List>
-      </Nav>
-  )
-}
 
 export default Header;

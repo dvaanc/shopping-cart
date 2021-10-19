@@ -3,7 +3,6 @@ import logo from '../assets/ghlogo.png'
 
 const Wrapper = styled.footer`
   position: relative;
-  top: -5px;
   display: flex;
   justify-content: center;
   align-items: center;
