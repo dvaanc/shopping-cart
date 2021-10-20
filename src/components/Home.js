@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import homeImage from '../assets/homeimage.png';
+import { Link } from 'react-router-dom';
 
 function Home(props) {
   return (
@@ -13,9 +14,11 @@ function Home(props) {
           <ImageContent>
             <h3>GROUP BUY LIVE</h3>
             <p>GMK NAUTILUS</p>
-            <a href="/store">
+            <Link to='/store'>
               <button>SHOP NOW</button>
-            </a>
+            </Link>
+              
+            
           </ImageContent>
         </Main>
     </Content>
