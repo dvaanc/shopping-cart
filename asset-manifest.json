@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/shopping-cart/static/js/main.290a693c.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.290a693c.chunk.js.map",
+    "runtime-main.js": "/shopping-cart/static/js/runtime-main.8563d0ba.js",
+    "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.8563d0ba.js.map",
+    "static/js/2.7b82bcd1.chunk.js": "/shopping-cart/static/js/2.7b82bcd1.chunk.js",
+    "static/js/2.7b82bcd1.chunk.js.map": "/shopping-cart/static/js/2.7b82bcd1.chunk.js.map",
+    "index.html": "/shopping-cart/index.html",
+    "static/js/2.7b82bcd1.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.7b82bcd1.chunk.js.LICENSE.txt",
+    "static/media/NunitoSans-Regular.25d5a42e.ttf": "/shopping-cart/static/media/NunitoSans-Regular.25d5a42e.ttf",
+    "static/media/epbtsniper.e47bfc19.png": "/shopping-cart/static/media/epbtsniper.e47bfc19.png",
+    "static/media/gmkbushidobasekit.3673cb48.jpeg": "/shopping-cart/static/media/gmkbushidobasekit.3673cb48.jpeg",
+    "static/media/gmkherobasekit.3591bf2d.png": "/shopping-cart/static/media/gmkherobasekit.3591bf2d.png",
+    "static/media/gmkmizubasekit.740d98fe.jpg": "/shopping-cart/static/media/gmkmizubasekit.740d98fe.jpg",
+    "static/media/gmknautilusbasekit.289eaca0.png": "/shopping-cart/static/media/gmknautilusbasekit.289eaca0.png",
+    "static/media/gmkolivia++basekit.34ac5087.jpg": "/shopping-cart/static/media/gmkolivia++basekit.34ac5087.jpg",
+    "static/media/gmkterrorbelowbasekit.32af88b2.jpg": "/shopping-cart/static/media/gmkterrorbelowbasekit.32af88b2.jpg",
+    "static/media/homeimage.ebf87950.png": "/shopping-cart/static/media/homeimage.ebf87950.png",
+    "static/media/shoppingcart.19c60e8b.png": "/shopping-cart/static/media/shoppingcart.19c60e8b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8563d0ba.js",
+    "static/js/2.7b82bcd1.chunk.js",
+    "static/js/main.290a693c.chunk.js"
+  ]
+}
