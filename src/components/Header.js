@@ -2,6 +2,7 @@ import logo from '../assets/logo.png';
 import styled from 'styled-components';
 import shoppingCart from '../assets/shoppingcart.png';
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function Header(props) {
   const [cartNo, setCartNo] = React.useState();
@@ -31,16 +32,16 @@ function Header(props) {
         </Wrapper>
         <List>
           <li>
-            <a href='/shopping-cart/'>HOME</a>
+            <Link to='/'> HOME</Link>
           </li>
           <li>
-            <a href='/shopping-cart/store'>STORE</a>
+            <Link to='/store'>STORE</Link>
           </li>
         </List>
       </Nav>
   )
 }
-
+export default Header;
 const Nav = styled.nav`
   position: -webkit-sticky;
   position: sticky;
@@ -140,4 +141,3 @@ const List = styled.ul`
   }
 `
 
-export default Header;

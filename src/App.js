@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -21,25 +21,26 @@ function App() {
   const totalNumber = (int) => totalNumberRef.current(int)
   return (
       <Parent>
+
+        <HashRouter> 
         <Header handleClick={handleClick} totalNumber={totalNumberRef}/>
-        <Router> 
           <Switch>
             <Route 
             exact 
-            path='/shopping-cart/' 
+            path='/'
             component={Home} 
             />
             <Route 
             exact 
-            path='/shopping-cart/store' 
+            path='/store'
             render={() => <Store addToCart={addToCart} background="#141414" />}
             />
           </Switch>
-        </Router>
+        </HashRouter>
         <Footer />
         <Cart totalNumber={totalNumber} toggleCart={toggleCartRef} addToCart={addToCartRef}/>
       </Parent>
   );
 }
-
+console.log(process.env.PUBLIC_URL)
 export default App;
