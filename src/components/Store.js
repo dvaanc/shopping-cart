@@ -66,14 +66,6 @@ const Card = styled.div`
   flex-direction: column;
   min-height: 25%;
   min-width: 15%;
-  /* @media only screen and (max-width: 800px) {
-    min-height: 15%;
-    min-width: 15%;
-    font-size: 15px;
-  } */
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
   & button {
     &:hover {
       cursor: pointer;

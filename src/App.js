@@ -13,34 +13,31 @@ const Parent = styled.div`
   background-color: darkblue;
 `
 function App() {
-  const toggleCartRef = React.useRef(null)
-  const addToCartRef = React.useRef(null)
-  // let isToggle = false;
-  // const [blur, setBlur] = React.useState('hidden');
-  // const [showCart, setShowCart] = React.useState('-110%');
+  const toggleCartRef = React.useRef(null);
+  const addToCartRef = React.useRef(null);
+  const totalNumberRef = React.useRef(null);
   const handleClick = (e) => toggleCartRef.current(e);
   const addToCart = (item) => addToCartRef.current(item);
+  const totalNumber = (int) => totalNumberRef.current(int)
   return (
       <Parent>
-        <Header handleClick={handleClick}/>
+        <Header handleClick={handleClick} totalNumber={totalNumberRef}/>
         <Router> 
           <Switch>
             <Route 
             exact 
             path='/' 
             component={Home} 
-            // render={() => <Home />}
             />
             <Route 
             exact 
             path='/store' 
-            // component={Store} 
             render={() => <Store addToCart={addToCart} background="#141414" />}
             />
           </Switch>
         </Router>
         <Footer />
-        <Cart toggleCart={toggleCartRef} addToCart={addToCartRef}/>
+        <Cart totalNumber={totalNumber} toggleCart={toggleCartRef} addToCart={addToCartRef}/>
       </Parent>
   );
 }

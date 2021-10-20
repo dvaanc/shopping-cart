@@ -1,25 +1,21 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import close from '../../assets/close.png';
-import gmkNautilus from '../../assets/gmknautilusbasekit.png';
 import minus from '../../assets/minus.png';
 import { v4 as uuidv4 } from 'uuid';
+
 function Cart(props) {
-  const [showCart, setShowCart] = React.useState({
-    isToggled: 'hidden'
-  });
-  const [items, setItems] = React.useState([
-    {
-      name: 'GMK Nautilus',
-      price: 99,
-      img: gmkNautilus,
-      quantity: 1,
-    }
-  ])
+  const [showCart, setShowCart] = React.useState({ isToggled: 'hidden' });
+  const [items, setItems] = React.useState([]);
+  const [total, setTotal] = React.useState(0);
+
   React.useEffect(() => {
     props.toggleCart.current = toggleCart;
     props.addToCart.current = addToCart;
-  })
+    getTotalNumber();
+    getTotalCost();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, props.toggleCart.current])
 
   const addToCart = (item) => {
     const isItemInCart = items.some((i) => i.name === item.name)
@@ -34,7 +30,7 @@ function Cart(props) {
       img: item.img,
       quantity: 1,
     }
-        setItems([ ...items, itemToAdd])
+      setItems([ ...items, itemToAdd])
   }
   const toggleCart = () => {
     if(showCart.isToggled === 'hidden') return setShowCart({ isToggled: 'visible' });
@@ -58,6 +54,11 @@ function Cart(props) {
     setItems([...items]);
   }
   const deleteItem = (i) => items.splice(i, 1);
+  const getTotalNumber = () => props.totalNumber(items.reduce((sum, item) => sum + item.quantity, 0));
+  const getTotalCost = () => {
+    const int = items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+    setTotal(int);
+  }
   return (
     <div>
       <ThemeProvider theme={showCart}>
@@ -68,12 +69,13 @@ function Cart(props) {
               <img onClick={toggleCart} src={close} alt='close cart'/>
             </CartHeader>
             <CartItemsContainer>
-              {
-                items.map((item) => {
+              { items.map((item) => {
                   const uuid = uuidv4();
                   return(
                     <CartItem key={uuid}>
-                      <img src={item.img} alt="gmk nautilus"/>
+                      <ImageWrapper>
+                        <img draggable="false" src={item.img} alt="gmk nautilus"/>
+                      </ImageWrapper>
                       <CartItemText>
                         <h4>{item.name}</h4>
                         <p>${item.price}</p>
@@ -87,8 +89,11 @@ function Cart(props) {
                       </CartItemText>
                     </CartItem>
                   )
-                })
-              }
+                })  }
+              <Total>
+                <p>Total: ${total}</p>
+              </Total>
+              <Button>Checkout</Button>
             </CartItemsContainer>
           </Content>
         </Parent>
@@ -150,20 +155,30 @@ const CartItemsContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `
 const CartItem = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   min-height: 20%;
   width: 100%;
+  margin-bottom: 20px;
+  user-select: none;
+`
+const ImageWrapper = styled.div`
+  background-color: black;
+  height: 100%;
+  width: 50%;
+  margin-right: 10px;
   & img {
-    width: 50%;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left center;
+    object-position: center;
   }
 `
 const CartItemText = styled.div`
@@ -203,7 +218,27 @@ const ChangeOrderQuantity = styled.div`
         cursor: pointer;
       }
     }
-
   }
+`
+const Total = styled.div`
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+`
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 80%;
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  margin-top: 20px;
+  background-color: #3C454E;
 `
 

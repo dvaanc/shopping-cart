@@ -1,8 +1,16 @@
 import logo from '../assets/logo.png';
 import styled from 'styled-components';
 import shoppingCart from '../assets/shoppingcart.png';
+import React from 'react';
 
 function Header(props) {
+  const [cartNo, setCartNo] = React.useState();
+  
+  React.useEffect(() => {
+    props.totalNumber.current = updateCartNo
+  })
+  const updateCartNo = (int) => setCartNo(int);
+  
   return (
       <Nav>
         <Wrapper>
@@ -10,10 +18,13 @@ function Header(props) {
             <img src={logo} alt='logo' draggable="false" />
           </ImageWrapper>
           <div>
-          <ShoppingCart>
-            <ImageWrapper onClick={props.handleClick}>
+          <ShoppingCart onClick={props.handleClick}>
+            <ImageWrapper>
               <img src={shoppingCart} alt='shopping cart' draggable="false"/>
             </ImageWrapper>
+            <CartNumber>
+              <p>{cartNo}</p>
+            </CartNumber>
           </ShoppingCart>
           </div>
 
@@ -77,7 +88,22 @@ const ShoppingCart = styled.div `
     cursor: pointer;
     transform: scale(1.2);
   }
-
+`
+const CartNumber = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 15px;
+  right: 15px;
+  background-color: #BF1535;
+  color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 `
 const List = styled.ul`
   display: flex;
