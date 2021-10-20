@@ -2,7 +2,5 @@
  Part of the Odin Project curriculum.
 
 ## Project Overview
-WIP
-### Live Preview: **WIP**
-#### Features to be added:
-WIP
+  A basic recreation of a typical online shop website using React Router, Switch, Function Components, JavaScript and styled components.
+### Live Preview: **https://dvaanc.github.io/shopping-cart/**

@@ -26,12 +26,12 @@ function App() {
           <Switch>
             <Route 
             exact 
-            path='/' 
+            path='/shopping-cart/' 
             component={Home} 
             />
             <Route 
             exact 
-            path='/store' 
+            path='/shopping-cart/store' 
             render={() => <Store addToCart={addToCart} background="#141414" />}
             />
           </Switch>

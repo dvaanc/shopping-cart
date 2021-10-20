@@ -31,10 +31,10 @@ function Header(props) {
         </Wrapper>
         <List>
           <li>
-            <a href='/'>HOME</a>
+            <a href='/shopping-cart/'>HOME</a>
           </li>
           <li>
-            <a href='/store'>STORE</a>
+            <a href='/shopping-cart/store'>STORE</a>
           </li>
         </List>
       </Nav>
