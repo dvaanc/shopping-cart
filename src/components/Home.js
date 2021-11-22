@@ -78,9 +78,12 @@ const ImageContent = styled.div`
     font-size: 22px;
     letter-spacing: .1em;
     outline: none;
+    border: none;
+    border-radius: 25px;
+    /* transition: transform 0.3s ease 0s; */
     &:hover {
       cursor: pointer;
-      background-color: white;
+      /* transform: scale(1.05)  */
     }
   }
 `

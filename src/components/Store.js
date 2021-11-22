@@ -60,12 +60,19 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   row-gap: 15px;
   column-gap: 15px;
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 `
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 25%;
-  min-width: 15%;
+  justify-content: space-evenly;
+  min-height: 150px;
+  min-width: 75px;
+  max-height: 250px;
+  flex-grow: 1;
   & button {
     &:hover {
       cursor: pointer;
@@ -73,7 +80,7 @@ const Card = styled.div`
   }
 `
 const ImageWrapper = styled.div `
-  height: 80%;
+  min-height: 50%;
   width: 100%;
   margin-bottom: 10px;
     &:hover {

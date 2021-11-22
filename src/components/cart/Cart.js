@@ -1,21 +1,21 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import close from '../../assets/close.png';
 import minus from '../../assets/minus.png';
 import { v4 as uuidv4 } from 'uuid';
 
 function Cart(props) {
-  const [showCart, setShowCart] = React.useState({ isToggled: 'hidden' });
+  const [showCart, setShowCart] = React.useState(props.toggleCart);
   const [items, setItems] = React.useState([]);
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    props.toggleCart.current = toggleCart;
+    setShowCart(props.toggleCart);
     props.addToCart.current = addToCart;
     getTotalNumber();
     getTotalCost();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items, props.toggleCart.current])
+  }, [items, props.toggleCart])
 
   const addToCart = (item) => {
     const isItemInCart = items.some((i) => i.name === item.name)
@@ -32,12 +32,15 @@ function Cart(props) {
     }
       setItems([ ...items, itemToAdd])
   }
-  const toggleCart = () => {
-    if(showCart.isToggled === 'hidden') return setShowCart({ isToggled: 'visible' });
-    if(showCart.isToggled === 'visible') return setShowCart({ isToggled: 'hidden' })
-  }
+  // const toggleCart = () => {
+  //   if(showCart.isToggled === 'hidden') return setShowCart({ isToggled: 'visible' });
+  //   if(showCart.isToggled === 'visible') return setShowCart({ isToggled: 'hidden' })
+  // }
   const handleClick = (e) => {
-    if(e.target.id === 'container') return toggleCart();
+    if(e.target.id === 'container' || e.target.id === 'close') {
+      // setShowCart('hidden');
+      props.handleClick();
+    }
   }
   const subtractOrder = (e) => {
     let itemName = e.target.parentNode.parentNode.childNodes[0].innerText;
@@ -61,12 +64,11 @@ function Cart(props) {
   }
   return (
     <div>
-      <ThemeProvider theme={showCart}>
-        <Parent id="container" onClick={handleClick}>
+        <Parent id="container" isToggled={showCart} onClick={handleClick}>
           <Content>
             <CartHeader>
               <h1>Cart</h1>
-              <img onClick={toggleCart} src={close} alt='close cart'/>
+              <img id="close" src={close} alt='close cart'/>
             </CartHeader>
             <CartItemsContainer>
               { items.map((item) => {
@@ -97,7 +99,6 @@ function Cart(props) {
             </CartItemsContainer>
           </Content>
         </Parent>
-      </ThemeProvider>
     </div>
 
   )
@@ -106,7 +107,7 @@ export default Cart;
 
 const Parent = styled.div`
   position: fixed;
-  visibility: ${props => props.theme.isToggled};
+  visibility: ${props => props.isToggled};
   top: 0;
   display: flex;
   height: 100%;
@@ -114,6 +115,7 @@ const Parent = styled.div`
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
+  transition: visibility 2s ease-in;
 `
 const Content = styled.div`
   display: flex;
