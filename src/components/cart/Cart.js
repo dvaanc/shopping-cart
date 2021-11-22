@@ -38,7 +38,7 @@ function Cart(props) {
   // }
   const handleClick = (e) => {
     if(e.target.id === 'container' || e.target.id === 'close') {
-      // setShowCart('hidden');
+      setShowCart('hidden');
       props.handleClick();
     }
   }

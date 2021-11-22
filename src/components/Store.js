@@ -63,7 +63,6 @@ const CardContainer = styled.div`
   @media (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
 `
 const Card = styled.div`
   display: flex;
